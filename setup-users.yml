@@ -15,7 +15,7 @@
         line: '%wheel ALL=(ALL:ALL) ALL'
         validate: 'visudo -cf %s'
 
-    - name: "Ensure default groups are setup"
+    - name: "Ensure default groups are set up"
       group:
         name: "{{ item.name }}"
         state: present
@@ -23,7 +23,7 @@
         gid: "{{ item.gid }}"
       with_items: "{{ default_groups }}"
 
-    - name: "Ensure default users are setup"
+    - name: "Ensure default users are set up"
       user:
         group: "{{ item.group  }}"
         name: "{{ item.username }}"

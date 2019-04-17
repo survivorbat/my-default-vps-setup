@@ -1,10 +1,10 @@
 default_groups:
   - name: "rungroup"
     system: yes
-    gid: "{{ 15000 | random(start=10000 }}"
+    gid: "{{ 15000 | random(start=10000) }}"
   - name: "developer"
     system: no
-    gid: "{{ 20000 | random(start=15000 }}"
+    gid: "{{ 20000 | random(start=15000) }}"
 
 default_users:
   - username: "developer"
@@ -25,7 +25,7 @@ default_users:
       ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCTv+EKsLUqwcRX1JxlLh/GxhyDLgeZox8faFC7FcyPcSGEQyHuuhPuQNDtpZghCBSlqF2oUrRIJVOi0GvsHXzEAo9fO2/CCG/2TGmZhxfrLuDqx7qx43mj9EAaKowG6xmmdjxbladAbHQWGVKo4vG753IGWjbMejU7Tkv4ylvYZRMJMubigF/gTWjjEtyEN7Mm89sZBOUlPTAZU+klL4VU2lYxvCILSQ4KDEqvDBVoSup+nA1VjXdwfVwSH04iYkGUax0C7OFZm9zqqyhpm56J4RmalRZEPDnr+6EomxXVhuMGGVZ3YUz67T1Qw6tVJbSLd6zc3wDPxOH+N4KieD1 jomam@DESKTOP-D8UC560
       ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRXbY+wcMq0zSE6lF8xiL83cQk/7/Y4uV1AQ+9LlyV4F2hCUKXzXFXhNzpWFP0xWd4rtwgQ6zK188fOwl+YZHnfE/LswbSeNsjjbYm+z2ijMbrMMCcooY+hoVJI3tAx+7EUc8RKRs07hSGmmP8NhfuRghZw04nzui+fJkAE/Wd09Y1a+s5GucLbjJJEDJzuuvy/12Vow2QrGLNtbcr3N5SquZmp5nhHfua6NFQgVZ6jO17+2MqqcXObxFQzmWte7QKa1g6UoE/v1/WcOxmYkrYyMVtts7TKMXVWF/Kj+qOLnj9VIgWNHZ38hztb2nOiIQVrwz9bLx0UDZ29dm0zS5b maarten@MaartenPC
     shell: "/bin/bash"
-    uid: "{{ 15000 | random(start=10000 }}"
+    uid: "{{ 15000 | random(start=10000) }}"
 
   - username: "runuser"
     group: "rungroup"
@@ -33,6 +33,6 @@ default_users:
     create_home: yes
     comment: "Runuser responsible for running applications"
     shell: "/bin/bash"
-    uid: "{{ 20000 | random(start=15000 }}"
+    uid: "{{ 20000 | random(start=15000) }}"
     password: ~
     authorized_key: ~
