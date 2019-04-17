@@ -2,7 +2,6 @@
 - name: Install common packages
   hosts: all
   become: yes
-  tags: install_packages
   vars:
     pip_install_packages:
       - name: docker
