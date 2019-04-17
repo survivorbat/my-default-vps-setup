@@ -5,9 +5,6 @@ default_groups:
   - name: "developer"
     system: no
     gid: "9000"
-  - name: "wheel"
-    gid: "2000"
-    system: yes
 
 default_users:
   - username: "developer"
