@@ -1,0 +1,29 @@
+---
+- name: "Ensure default users are installed and have public keys available"
+  hosts: all
+  become: yes
+  tags: install_users
+  tasks:
+    - name: "Ensure default groups are setup"
+      group:
+        name: "{{ item.name }}"
+        state: present
+        system: "{{ item.system }}"
+        gid: "{{ item.gid }}"
+      with_items: "{{ default_groups  }}"
+    - name: "Ensure default users are setup"
+      user:
+        group: "{{ item.group  }}"
+        name: "{{ item.username }}"
+        groups: "{{ item.groups }}"
+        comment: "{{ item.comment }}"
+        create_home: "{{ item..create_home }}"
+        password: "{{ item.password }}"
+        shell: "{{ item.shell }}"
+        uid: "{{ item.uid }}"
+      with_items: "{{ default_users }}"
+    - name: "Add public key to authorized_keys"
+      authorized_key:
+        user: "{{ item.username }}"
+        state: present
+        key: "{{ item.authorized_key }}"

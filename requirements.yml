@@ -1,0 +1,8 @@
+- name: geerlingguy.docker
+  src: https://github.com/geerlingguy/ansible-role-docker.git
+
+- name: geerlingguy.pip
+  src: https://github.com/geerlingguy/ansible-role-pip.git
+
+- name: geerlingguy.certbot
+  src: https://github.com/geerlingguy/ansible-role-certbot.git

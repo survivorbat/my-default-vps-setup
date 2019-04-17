@@ -1,0 +1,10 @@
+---
+- name: Install python for Ansible on remote host(s)
+  hosts: all
+  gather_facts: no
+  become: yes
+  tags: server_install
+  tasks:
+    # First install python on the host, Ansible is unusable without Python so we blindly send an apt install command
+    - name: "Make sure python 2 is installed"
+      raw: "sudo apt-get -y install python"
