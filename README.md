@@ -14,6 +14,14 @@ This script does a few things on a remote host, namely:
 After this I can directly ssh into one of my machines without using the root account which
 is quite convenient. 
 
+## Prerequisites
+
+I set up a Makefile to make it easy to deploy dynamically to servers, make is not an
+essential requirement but it does make it easier to deploy to hosts.
+
+The most important requisite is ansible-playbook, since this will be used
+to kick off the yaml scripts.
+
 ## Getting started
 
 Since this script is for my personal use it might be a bit hard to set up for other people.
