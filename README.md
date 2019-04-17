@@ -29,7 +29,7 @@ If you however want to try it out for yourself you'd have to do a few things:
 
 1. Clone the repository
 2. Add a .vault-password file with the vault password OR change user passwords and keys to your own in `group_vars/all.yml`
-3. Run `make run ips='example.com example.nl example.org'` to start deploying to a remote host
+3. Run `make run ips='example.com example.nl example.org' master=example.com` to start deploying to a remote host
 
 And that's it! If everything goes well you'll be able to ssh into your own server and
 get the party started.

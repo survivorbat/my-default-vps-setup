@@ -17,3 +17,33 @@
     - geerlingguy.pip
     - geerlingguy.docker
     - geerlingguy.certbot
+
+- name: Install kubernetes master
+  hosts: "{{ master }}"
+  become: yes
+  tags: setup_packages
+
+  vars:
+    kubernetes_version: '1.13'
+    kubernetes_version_rhel_package: '1.13.3'
+    kubernetes_allow_pods_on_master: true
+    kubernetes_role: master
+    kubernetes_enable_web_ui: yes
+
+  roles:
+    - geerlingguy.kubernetes
+
+- name: Install kubernetes node(s)
+  hosts: "all,!{{ master }}"
+  become: yes
+  tags: setup_packages
+
+  vars:
+    kubernetes_version: '1.13'
+    kubernetes_version_rhel_package: '1.13.3'
+    kubernetes_allow_pods_on_master: true
+    kubernetes_role: node
+    kubernetes_enable_web_ui: yes
+
+  roles:
+    - geerlingguy.kubernetes

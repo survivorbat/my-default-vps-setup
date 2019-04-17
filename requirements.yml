@@ -6,3 +6,6 @@
 
 - name: geerlingguy.certbot
   src: https://github.com/geerlingguy/ansible-role-certbot.git
+
+- name: geerlingguy.kubernetes
+  src: https://github.com/geerlingguy/ansible-role-kubernetes.git
