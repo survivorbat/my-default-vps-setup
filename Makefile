@@ -11,5 +11,5 @@ help:
 run: ## Run ansible-playbook to specified ips seperated by spaces
 	ansible-galaxy install -r requirements.yml
 	echo "$(ips)" | tr " " "\n" > inventories/.temp
-	ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventories/.temp site.yml --vault-password-file ../.vault-password -e master $(master) -u root --tags setup_users
+	ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventories/.temp site.yml --vault-password-file ../.vault-password -e master=$(master) -u root
 	rm -v inventories/.temp
