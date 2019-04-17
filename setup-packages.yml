@@ -1,1 +1,16 @@
 ---
+- name: Install common packages
+  hosts: all
+  become: yes
+  tags: install_packages
+  vars:
+    pip_install_packages:
+      - name: docker
+      - name: docker-compose
+    docker_install_compose: true
+    docker_compose_version: 1.17.1
+    docker_edition: 'ce'
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker
+    - geerlingguy.certbot
