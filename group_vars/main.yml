@@ -1,2 +1,18 @@
 default_groups:
-  -
+  - name: "rungroup"
+    system: yes
+    gid: "20000"
+  - name: "developer"
+    system: no
+    gid: "9000"
+
+default_users:
+  - username: "developer"
+    group: "developer"
+    groups: ["docker"]
+    comment: "Default developer account"
+    create_home: yes
+    password:
+    authorized_key:
+    shell: "/bin/bash"
+    uid: "9000"
