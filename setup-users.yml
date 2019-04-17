@@ -2,6 +2,7 @@
 - name: "Ensure default users are installed and have public keys available"
   hosts: all
   become: yes
+  tags: setup_users
   tasks:
     - name: "Ensure default groups are setup"
       group:

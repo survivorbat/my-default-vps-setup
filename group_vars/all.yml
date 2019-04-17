@@ -5,11 +5,14 @@ default_groups:
   - name: "developer"
     system: no
     gid: "9000"
+  - name: "wheel"
+    gid: "2000"
+    system: yes
 
 default_users:
   - username: "developer"
     group: "developer"
-    groups: ["docker"]
+    groups: ["docker", "wheel"]
     comment: "Default developer account"
     create_home: yes
     password: !vault |
@@ -23,3 +26,12 @@ default_users:
     authorized_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtjo3fxl3gpQkywnXSZTVzJIzTiy3q8HCmPiyKVXCEQjPSwGN0s0T/sxHS3QqWvmWC0Qo3LQ/39rDhrNJOn+NGdIP6edEVdW4kfegI2n6nIQ0EyAKuMtx59S7nCSqo4hX9zaL3NhlBiKIYPAPxSmC91EiXEdQfMtn/dTHkZ5zWvbpDF7QHxaRwjxtqZhjoxWFLShijKmtijo0Tn9iiEHfUsS/cw+cJWM784k9MaCPdkzN9xewi4smpOS83rModhrZawCIqDRCa9K46T2K5XMQpac4pKvGrLbTCDwc0HzLR84IturpqF0b3ojriLZ1jP18rGEN5GP1Ij0aL0rH/iUaT survivorbat@MaartenPC"
     shell: "/bin/bash"
     uid: "9000"
+  - username: "runuser"
+    group: "rungroup"
+    groups: ["docker"]
+    create_home: yes
+    comment: "Runuser responsible for running applications"
+    shell: "/bin/bash"
+    uid: "30000"
+    password: ~
+    authorized_key: ~
