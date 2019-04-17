@@ -3,6 +3,7 @@
   hosts: all
   become: yes
   tags: setup_packages
+
   vars:
     pip_install_packages:
       - name: docker
@@ -11,6 +12,7 @@
     docker_install_compose: true
     docker_compose_version: 1.17.1
     docker_edition: 'ce'
+
   roles:
     - geerlingguy.pip
     - geerlingguy.docker

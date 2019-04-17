@@ -7,12 +7,14 @@
     - name: "Ensure wheel group exists"
       group:
         name: "wheel"
-    - name: "Ensuring that wheel is able to use sudo without password"
+
+    - name: "Ensure that the wheel group is able to use sudo"
       lineinfile:
         path: /etc/sudoers
         regexp: '^%wheel'
         line: '%wheel ALL=(ALL:ALL) ALL'
         validate: 'visudo -cf %s'
+
     - name: "Ensure default groups are setup"
       group:
         name: "{{ item.name }}"
@@ -20,6 +22,7 @@
         system: "{{ item.system }}"
         gid: "{{ item.gid }}"
       with_items: "{{ default_groups }}"
+
     - name: "Ensure default users are setup"
       user:
         group: "{{ item.group  }}"
@@ -31,6 +34,7 @@
         shell: "{{ item.shell }}"
         uid: "{{ item.uid }}"
       with_items: "{{ default_users }}"
+
     - name: "Add public key to authorized_keys"
       authorized_key:
         user: "{{ item.username }}"
