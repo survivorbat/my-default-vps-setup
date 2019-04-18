@@ -7,19 +7,18 @@
   vars:
     pip_install_packages:
       - name: docker
-      - name: docker-compose
       - name: pyopenssl
-    docker_install_compose: yes
-    docker_compose_version: 1.17.1
+    docker_install_compose: no
     docker_edition: 'ce'
     docker_package: "docker-{{ docker_edition }}=18.06.1~ce~3-0~ubuntu"
+    swap_file_state: absent
 
   roles:
     - geerlingguy.pip
     - geerlingguy.docker
-    - geerlingguy.certbot
+    - geerlingguy.swap
 
-- name: Install kubernetes master
+- name: Install kubernetes
   hosts: all
   become: yes
   tags: setup_packages
@@ -28,8 +27,9 @@
     kubernetes_version: '1.13'
     kubernetes_pod_network_cidr: 10.244.0.0/16
     kubernetes_allow_pods_on_master: yes
-    kubernetes_version_rhel_package: '1.13.3'
+    kubernetes_version_rhel_package: '1.13'
     kubernetes_enable_web_ui: yes
+    kubernetes_apiserver_advertise_address: "{{ inventory_hostname }}"
 
   roles:
     - geerlingguy.kubernetes
