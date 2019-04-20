@@ -46,13 +46,6 @@
         line: "PermitEmptyPasswords no"
       notify: sshd_restart
 
-    - name: "Ensure remote root login is disabled"
-      lineinfile:
-        dest: /etc/ssh/sshd_config
-        regexp: "^#?PermitRootLogin"
-        line: "PermitRootLogin no"
-      notify: sshd_restart
-
     - name: "Ensure password login is disabled"
       lineinfile:
         dest: /etc/ssh/sshd_config
