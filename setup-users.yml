@@ -32,9 +32,37 @@
         validate: 'visudo -cf %s'
       with_items: "{{ default_sudo_groups }}"
 
-    - name: "Add public key to authorized_keys"
+    - name: "Ensure public key(s) are in authorized_keys"
       authorized_key:
         user: "{{ item.username }}"
         state: present
         key: "{{ item.authorized_key }}"
       with_items: "{{ default_users }}"
+
+    - name: "Ensure empty password login is disabled"
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "^#?PermitEmptyPasswords"
+        line: "PermitEmptyPasswords no"
+      notify: sshd_restart
+
+    - name: "Ensure remote root login is disabled"
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "^#?PermitRootLogin"
+        line: "PermitRootLogin no"
+      notify: sshd_restart
+
+    - name: "Ensure password login is disabled"
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "^(#\\s*)?PasswordAuthentication "
+        line: "PasswordAuthentication no"
+      notify: sshd_restart
+
+    - name: "Ensure Pam is enabled"
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "^#?UsePAM"
+        line: "UsePAM yes"
+      notify: sshd_restart
