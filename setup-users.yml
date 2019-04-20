@@ -4,17 +4,6 @@
   become: yes
   tags: setup_users
   tasks:
-    - name: "Ensure wheel group exists"
-      group:
-        name: "wheel"
-
-    - name: "Ensure that the wheel group is able to use sudo"
-      lineinfile:
-        path: /etc/sudoers
-        regexp: '^%wheel'
-        line: '%wheel ALL=(ALL:ALL) ALL'
-        validate: 'visudo -cf %s'
-
     - name: "Ensure default groups are set up"
       group:
         name: "{{ item.name }}"
@@ -34,6 +23,14 @@
         shell: "{{ item.shell }}"
         uid: "{{ item.uid }}"
       with_items: "{{ default_users }}"
+
+    - name: "Ensure that sudogroups have sudo permission"
+      lineinfile:
+        path: /etc/sudoers
+        regexp: '^%{{ item }}'
+        line: '%{{ item }} ALL=(ALL:ALL) NOPASSWD:ALL'
+        validate: 'visudo -cf %s'
+      with_items: "{{ default_sudo_groups }}"
 
     - name: "Add public key to authorized_keys"
       authorized_key:
