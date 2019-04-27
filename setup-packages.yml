@@ -13,7 +13,13 @@
     docker_compose_version: 1.17.1
     docker_edition: 'ce'
 
+    firewall_allowed_tcp_ports:
+      - 22
+      - 80
+      - 443
+
   roles:
+    - geerlingguy.firewall
     - geerlingguy.pip
     - geerlingguy.docker
     - geerlingguy.certbot
