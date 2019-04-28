@@ -10,9 +10,14 @@
       - name: pyopenssl
     docker_install_compose: no
     docker_edition: 'ce'
-    swap_file_state: absent
+
+    firewall_allowed_tcp_ports:
+      - 22
+      - 80
+      - 443
 
   roles:
+    - geerlingguy.firewall
     - geerlingguy.pip
     - geerlingguy.docker
     - geerlingguy.swap
