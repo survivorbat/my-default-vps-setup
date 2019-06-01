@@ -9,5 +9,6 @@
   roles:
     - geerlingguy.docker
     - geerlingguy.pip
+    - geerlingguy.swap
     - geerlingguy.kubernetes
     - common

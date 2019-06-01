@@ -9,3 +9,7 @@
 - name: geerlingguy.kubernetes
   src: https://github.com/geerlingguy/ansible-role-kubernetes.git
   version: master
+
+- name: geerlingguy.swap
+  src: https://github.com/geerlingguy/ansible-role-swap.git
+  version: master
