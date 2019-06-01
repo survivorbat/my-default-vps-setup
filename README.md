@@ -18,9 +18,6 @@ is quite convenient.
 
 ## Prerequisites
 
-I set up a Makefile to make it easy to deploy dynamically to servers, make is not an
-essential requirement but it does make it easier to deploy to hosts.
-
 The most important requisite is ansible-playbook, since this will be used
 to kick off the yaml scripts.
 
@@ -31,7 +28,7 @@ If you however want to try it out for yourself you'd have to do a few things:
 
 1. Clone the repository
 2. Add a .vault-password file in ../ with the vault password OR change user passwords and keys to your own in `group_vars/all.yml`
-3. Run `make run nodes='examplenode.com examplenode2.com' master=examplemaster.com` to start deploying to a remote host
+3. Run `make run` to start deploying to a remote host
 
 And that's it! If everything goes well you'll be able to ssh into your own server and
 get the party started.
