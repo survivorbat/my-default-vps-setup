@@ -1,9 +1,0 @@
----
-- name: Install python for Ansible on remote host(s)
-  hosts: all
-  gather_facts: no
-  become: yes
-  tags: setup_python
-  tasks:
-    - name: "Make sure python 2 is installed"
-      raw: "sudo apt update && sudo apt -y install python"

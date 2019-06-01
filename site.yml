@@ -1,6 +1,13 @@
 ---
-- import_playbook: install-python.yml
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: Ensure python
+      raw: sudo apt update && sudo apt -y install python
 
-- import_playbook: setup-packages.yml
-
-- import_playbook: setup-users.yml
+- hosts: develop
+  roles:
+    - geerlingguy.docker
+    - geerlingguy.certbot
+    - geerlingguy.pip
+    - common
