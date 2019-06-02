@@ -1,0 +1,4 @@
+[develop]
+a1.mheijden.nl kubernetes_role=master
+a2.mheijden.nl kubernetes_role=node
+a5.mheijden.nl kubernetes_role=node

@@ -1,0 +1,11 @@
+pip_install_packages:
+  - name: setuptools
+  - name: pyopenssl
+    version: 16.2.0
+  - name: certbot-dns-digitalocean
+  - name: docker
+kubernetes_version: '1.14'
+kubernetes_allow_pods_on_master: yes
+kubernetes_enable_web_ui: yes
+docker_edition: 'ce'
+swap_file_state: absent
