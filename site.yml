@@ -5,9 +5,13 @@
     - name: Ensure python
       raw: sudo apt update && sudo apt -y install python
 
-- hosts: develop
+- hosts: all
   roles:
     - geerlingguy.docker
     - geerlingguy.certbot
     - geerlingguy.pip
     - common
+
+- hosts: personal-website
+  roles:
+    - certbot-digitalocean

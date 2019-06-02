@@ -1,0 +1,3 @@
+digitalocean_token: ""
+nginx_host_letsencrypt_email: example@example.com
+additional_domains: []
