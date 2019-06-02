@@ -12,7 +12,7 @@
     - { regexp: "^PasswordAuthentication", line: "PasswordAuthentication no" }
     - { regexp: "^X11Forwarding", line: "X11Forwarding no" }
     - { regexp: "^MaxAuthTries", line: "MaxAuthTries 2" }
-    - { regexp: "^AllowTcpForwarding", line: "AllowTcpForwarding no" }
+    - { regexp: "^AllowTcpForwarding", line: "AllowTcpForwarding yes" }
     - { regexp: "^ClientAliveCountMax", line: "ClientAliveCountMax 3" }
     - { regexp: "^ClientAliveInterval", line: "ClientAliveInterval 60" }
     - { regexp: "^Compression" , line: "Compression delayed" }
