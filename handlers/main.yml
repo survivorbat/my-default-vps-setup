@@ -1,5 +1,0 @@
----
-- name: sshd_restart
-  service:
-    name: sshd
-    state: restarted
